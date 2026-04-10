@@ -2,7 +2,7 @@
 
 > :warning: **Very much work in progress** — built entirely through vibe coding. Expect rough edges, rapid changes, and experimental features.
 
-<video src="assets/demo.mov" width="100%" autoplay loop muted playsinline />
+<video src="assets/demo.mp4" width="100%" autoplay loop muted playsinline />
 
 Sync your Neovim colorscheme to [pi](https://github.com/badlogic/pi-mono)'s theme system. This plugin automatically exports your current nvim colors so pi can match your editor's theme.
 
