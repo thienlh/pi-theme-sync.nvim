@@ -60,7 +60,7 @@ require("pi-theme-sync").setup({
   exportOnStartup = true,
   startupDelay = 500, -- milliseconds
 
-  -- Cleanup old tmp-* theme files
+  -- Cleanup old nvim-* theme files
   cleanupTmpThemes = true,
   maxTmpThemes = 10,      -- Start cleanup when more than this exist
   keepRecentTmpThemes = 5, -- Keep this many most recent themes
@@ -135,7 +135,7 @@ Run `:checkhealth pi-theme-sync` to verify:
 ## How It Works
 
 1. On startup or colorscheme change, the plugin extracts colors from your nvim highlight groups
-2. Creates a JSON theme file in `~/.pi/agent/themes/tmp-<pid>.json`
+2. Creates a JSON theme file in `~/.pi/agent/themes/nvim-<pid>.json`
 3. Updates `~/.pi/agent/settings.json` to use this theme when you run `:Pi`
 4. Cleans up old temporary themes automatically
 
