@@ -20,7 +20,7 @@ Sync your Neovim colorscheme to [pi](https://github.com/badlogic/pi-mono)'s them
 
 ```lua
 {
-  "thien/pi-theme-sync.nvim", -- replace with your username
+  "thienlh/pi-theme-sync.nvim", -- replace with your username
   config = function()
     require("pi-theme-sync").setup()
   end,
@@ -31,7 +31,7 @@ Sync your Neovim colorscheme to [pi](https://github.com/badlogic/pi-mono)'s them
 
 ```lua
 use {
-  "thien/pi-theme-sync.nvim",
+  "thienlh/pi-theme-sync.nvim",
   config = function()
     require("pi-theme-sync").setup()
   end,
@@ -46,25 +46,25 @@ use {
 require("pi-theme-sync").setup({
   -- Directory where pi looks for themes
   piThemesDir = vim.fn.expand("~/.pi/agent/themes"),
-  
+
   -- Path to pi's settings.json
   piSettingsPath = vim.fn.expand("~/.pi/agent/settings.json"),
-  
+
   -- Enable automatic theme export
   autoExport = true,
-  
+
   -- Export when colorscheme changes
   exportOnColorscheme = true,
-  
+
   -- Export on startup (with delay)
   exportOnStartup = true,
   startupDelay = 500, -- milliseconds
-  
+
   -- Cleanup old tmp-* theme files
   cleanupTmpThemes = true,
   maxTmpThemes = 10,      -- Start cleanup when more than this exist
   keepRecentTmpThemes = 5, -- Keep this many most recent themes
-  
+
   -- Create user commands
   createCommands = true,  -- :PiThemeExport, :PiThemeDisable, :PiThemeEnable
   createPiCommand = true, -- :Pi (launch pi in terminal)
@@ -83,17 +83,25 @@ vim.g.pi_theme_sync_config = {
 }
 
 -- Then in lazy.nvim, you don't need a config function:
-{ "thien/pi-theme-sync.nvim" }
+{ "thienlh/pi-theme-sync.nvim" }
 ```
 
 ## Commands
 
-| Command | Description |
-|---------|-------------|
-| `:Pi` | Open pi in a vertical split terminal with current theme |
-| `:PiThemeExport` | Manually export current colorscheme to pi |
-| `:PiThemeDisable` | Disable auto-export on colorscheme changes |
-| `:PiThemeEnable` | Re-enable auto-export |
+| Command           | Description                                             |
+| ----------------- | ------------------------------------------------------- |
+| `:Pi`             | Open pi in a vertical split terminal with current theme |
+| `:PiThemeExport`  | Manually export current colorscheme to pi               |
+| `:PiThemeDisable` | Disable auto-export on colorscheme changes              |
+| `:PiThemeEnable`  | Re-enable auto-export                                   |
+
+## Recommended Keymap
+
+Add this optional keymap to your `init.lua` (or keymaps configuration file) for quick access to pi:
+
+```lua
+vim.keymap.set("n", "<leader>ap", ":Pi<CR>", { desc = "Open Pi coding agent" })
+```
 
 ## API
 
@@ -119,6 +127,7 @@ pi_theme_sync.setup({
 ## Health Check
 
 Run `:checkhealth pi-theme-sync` to verify:
+
 - Themes directory exists and is writable
 - Current theme file exists
 - Settings file status
