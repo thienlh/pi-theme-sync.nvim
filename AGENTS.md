@@ -39,6 +39,10 @@ When adding new color fields to the exported theme:
 
 - Mark completed items with `[x]` in your local TODO.md if the file exists
 
+### Updating documentation
+
+- For changes that may affect documentation, update the doc too
+
 ## Git Ignore Policy
 
 - Entries in `.gitignore` are intentionally excluded from version control
