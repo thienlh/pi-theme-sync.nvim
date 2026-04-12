@@ -97,46 +97,46 @@ local function getColorWithFallback(groups, attr, fallback)
 	return fallback
 end
 
--- Get unique nvim instance ID from process ID with tmp- prefix
+-- Get unique nvim instance ID from process ID with nvim- prefix
 local function getNvimId()
 	if cachedNvimId then
 		return cachedNvimId
 	end
-	cachedNvimId = "tmp-" .. tostring(vim.fn.getpid())
+	cachedNvimId = "nvim-" .. tostring(vim.fn.getpid())
 	return cachedNvimId
 end
 
--- Cleanup old tmp themes
+-- Cleanup old nvim themes (only cleans up files created by this plugin)
 local function cleanupOldTmpThemes()
 	if not M.config.cleanupTmpThemes then
 		return
 	end
 
+	local nvim_files = {}
 	local all_files = vim.fn.glob(M.config.piThemesDir .. "/*.json", false, true)
-	if #all_files <= M.config.maxTmpThemes then
-		return
-	end
-
-	local tmp_files = {}
 	for _, filepath in ipairs(all_files) do
 		local filename = vim.fn.fnamemodify(filepath, ":t")
-		if filename:match("^tmp%-") then
+		if filename:match("^nvim%-") then
 			local mtime = vim.fn.getftime(filepath)
-			table.insert(tmp_files, { path = filepath, mtime = mtime })
+			table.insert(nvim_files, { path = filepath, mtime = mtime })
 		end
 	end
 
-	table.sort(tmp_files, function(a, b)
+	if #nvim_files <= M.config.maxTmpThemes then
+		return
+	end
+
+	table.sort(nvim_files, function(a, b)
 		return a.mtime < b.mtime
 	end)
 
-	local to_remove = #tmp_files - M.config.keepRecentTmpThemes
+	local to_remove = #nvim_files - M.config.keepRecentTmpThemes
 	if to_remove <= 0 then
 		return
 	end
 
 	for i = 1, to_remove do
-		vim.fn.delete(tmp_files[i].path)
+		vim.fn.delete(nvim_files[i].path)
 	end
 end
 
@@ -333,6 +333,10 @@ function M.checkhealth()
 	vim.health[themes_dir_exists and "ok" or "warn"]("Pi themes directory: " .. M.config.piThemesDir)
 
 	-- Check if we can write
+	-- NOTE: Intentionally using mkdir instead of temp file creation to avoid
+	-- writing files to user's machine during health check. If directory exists
+	-- and is accessible, writability is assumed. Users will see actual errors
+	-- during export if permissions are insufficient.
 	if themes_dir_exists then
 		vim.fn.mkdir(M.config.piThemesDir, "p")
 		vim.health.ok("Can write to themes directory")
