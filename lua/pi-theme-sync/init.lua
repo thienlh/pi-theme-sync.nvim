@@ -19,9 +19,6 @@ M.config = {
 local cachedNvimId = nil
 local augroup = vim.api.nvim_create_augroup("PiThemeSync", { clear = true })
 
--- 256 color cube values (6x6x6)
-local CUBE_VALUES = { 0, 95, 135, 175, 215, 255 }
-
 -- Convert 256-color index to hex
 local function ansi256ToHex(index)
 	if index < 16 then
@@ -156,11 +153,23 @@ function M.exportPiTheme()
 			"fg",
 			"#569CD6"
 		),
-		syntaxFunction = getColorWithFallback({ "Function", "@function", "@method", "@function.call" }, "fg", "#DCDCAA"),
+		syntaxFunction = getColorWithFallback(
+			{ "Function", "@function", "@method", "@function.call" },
+			"fg",
+			"#DCDCAA"
+		),
 		syntaxVariable = getColorWithFallback({ "Identifier", "@variable", "@identifier" }, "fg", "#9CDCFE"),
-		syntaxString = getColorWithFallback({ "String", "@string", "@string.documentation", "Character" }, "fg", "#CE9178"),
+		syntaxString = getColorWithFallback(
+			{ "String", "@string", "@string.documentation", "Character" },
+			"fg",
+			"#CE9178"
+		),
 		syntaxNumber = getColorWithFallback({ "Number", "@number", "@float", "Boolean" }, "fg", "#B5CEA8"),
-		syntaxType = getColorWithFallback({ "Type", "@type", "@type.builtin", "Structure", "Typedef" }, "fg", "#4EC9B0"),
+		syntaxType = getColorWithFallback(
+			{ "Type", "@type", "@type.builtin", "Structure", "Typedef" },
+			"fg",
+			"#4EC9B0"
+		),
 		syntaxOperator = getColorWithFallback({ "Operator", "@operator" }, "fg", "#D4D4D4"),
 		syntaxPunctuation = getColorWithFallback(
 			{ "Delimiter", "@punctuation", "@punctuation.bracket", "@punctuation.delimiter" },
@@ -243,7 +252,6 @@ function M.exportPiTheme()
 	if file then
 		file:write(json)
 		file:close()
-		vim.notify("Exported pi theme to " .. outputPath, vim.log.levels.INFO)
 		return true
 	else
 		vim.notify("Failed to write pi theme: " .. (err or "unknown error"), vim.log.levels.ERROR)
