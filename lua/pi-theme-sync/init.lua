@@ -318,6 +318,9 @@ function M.enable()
 		})
 	end
 
+	-- Immediate export to sync current state (re-enable scenario)
+	M.exportPiTheme()
+
 	vim.notify("pi-theme-sync auto-export enabled", vim.log.levels.INFO)
 end
 
