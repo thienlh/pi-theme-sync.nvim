@@ -187,19 +187,24 @@ function M.exportPiTheme()
 		warning = getColorWithFallback({ "Warning", "DiagnosticWarn", "Todo" }, "fg", "#ffff00"),
 		muted = getColorWithFallback({ "Comment", "@comment" }, "fg", "#808080"),
 		dim = getColorWithFallback({ "LineNr", "CursorLineNr" }, "fg", "#666666"),
+		-- Empty strings are intentional: pi theme requires non-null values
+		-- and will use its default colors when these are empty
 		text = "",
 		thinkingText = getColorWithFallback({ "Comment" }, "fg", "#808080"),
 
 		-- Background colors
 		selectedBg = getColorWithFallback({ "CursorLine", "Visual", "PmenuSel" }, "bg", "#3a3a4a"),
 		userMessageBg = getColorWithFallback({ "NormalFloat", "Pmenu", "Normal" }, "bg", "#343541"),
+		-- Empty string is intentional: pi will use its default color
 		userMessageText = "",
 		customMessageBg = getColorWithFallback({ "NormalFloat", "Pmenu" }, "bg", "#2d2838"),
+		-- Empty string is intentional: pi will use its default color
 		customMessageText = "",
 		customMessageLabel = getColorWithFallback({ "Special", "@constant.builtin" }, "fg", "#9575cd"),
 		toolPendingBg = getColorWithFallback({ "StatusLineNC", "LineNr" }, "bg", "#282832"),
 		toolSuccessBg = getColorWithFallback({ "DiffAdd" }, "bg", "#283228"),
 		toolErrorBg = getColorWithFallback({ "DiffDelete" }, "bg", "#3c2828"),
+		-- Empty string is intentional: pi will use its default color
 		toolTitle = "",
 		toolOutput = getColorWithFallback({ "Comment" }, "fg", "#808080"),
 
