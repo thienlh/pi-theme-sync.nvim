@@ -318,9 +318,6 @@ function M.enable()
 		})
 	end
 
-	if M.config.exportOnStartup then
-		vim.defer_fn(M.exportPiTheme, M.config.startupDelay)
-	end
 	vim.notify("pi-theme-sync auto-export enabled", vim.log.levels.INFO)
 end
 
