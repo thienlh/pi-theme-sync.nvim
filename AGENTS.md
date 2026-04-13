@@ -48,3 +48,9 @@ When adding new color fields to the exported theme:
 - Entries in `.gitignore` are intentionally excluded from version control
   do not commit them
 - Never use `git add -A`, each changes should have it own commit base on content of the change itself
+
+## Git Workflow
+
+- Always separate commit and push into distinct operations
+- Never push to remote without explicit user instruction
+- After committing, inform the user of the commits made and ask for confirmation before pushing
