@@ -1,6 +1,6 @@
 # pi-theme-sync.nvim
 
-> :warning: **Very much work in progress** — built entirely through vibe coding. Expect rough edges, rapid changes, and experimental features.
+> :warning: **Very much work in progress** — built entirely through vibe coding. Expect rough edges, rapid changes, and experimental features. Contributions are welcomed.
 
 ![Demo](assets/demo.gif)
 
@@ -20,7 +20,7 @@ Sync your Neovim colorscheme to [pi](https://github.com/badlogic/pi-mono)'s them
 
 ```lua
 {
-  "thienlh/pi-theme-sync.nvim", -- replace with your username
+  "thienlh/pi-theme-sync.nvim",
   config = function()
     require("pi-theme-sync").setup()
   end,
