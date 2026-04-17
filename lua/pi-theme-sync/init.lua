@@ -13,6 +13,7 @@ M.config = {
 	keepRecentTmpThemes = 5,
 	createCommands = true,
 	createPiCommand = true,
+	piWidth = 72,
 }
 
 -- Cached nvim instance ID
@@ -297,8 +298,8 @@ function M.openPi()
 		end
 	end
 
-	-- Open terminal with pi
-	vim.cmd("botright vsplit | terminal pi --no-themes --theme " .. vim.fn.shellescape(theme_path))
+	-- Open terminal with pi at configured width
+	vim.cmd("botright " .. M.config.piWidth .. "vsplit | terminal pi --no-themes --theme " .. vim.fn.shellescape(theme_path))
 	vim.cmd("startinsert")
 
 	-- Cleanup old tmp themes (deferred)

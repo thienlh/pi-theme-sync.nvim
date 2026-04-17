@@ -68,6 +68,9 @@ require("pi-theme-sync").setup({
   -- Create user commands
   createCommands = true,  -- :PiThemeExport, :PiThemeDisable, :PiThemeEnable
   createPiCommand = true, -- :Pi (launch pi in terminal)
+
+  -- Width of the pi panel when opened with :Pi
+  piWidth = 72,           -- Columns (default: 72, use 50-60 for 1/3 split on typical screens)
 })
 ```
 
