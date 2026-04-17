@@ -13,7 +13,7 @@ M.config = {
 	keepRecentTmpThemes = 5,
 	createCommands = true,
 	createPiCommand = true,
-	piWidth = 72,
+	piWidth = 80,
 }
 
 -- Cached nvim instance ID
