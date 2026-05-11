@@ -213,8 +213,16 @@ function M.exportPiTheme()
 		mdHeading = getColorWithFallback({ "Title", "@text.title", "markdownH1" }, "fg", "#f0c674"),
 		mdLink = getColorWithFallback({ "Underlined", "@text.uri", "markdownLinkText" }, "fg", "#81a2be"),
 		mdLinkUrl = getColorWithFallback({ "Comment" }, "fg", "#666666"),
-		mdCode = getColorWithFallback({ "@text.literal", "markdownCode" }, "fg", "#8abeb7"),
-		mdCodeBlock = getColorWithFallback({ "@text.literal", "markdownCodeBlock" }, "fg", "#b5bd68"),
+		mdCode = getColorWithFallback(
+			{ "@markup.raw.markdown_inline", "@markup.raw", "@text.literal", "markdownCode" },
+			"fg",
+			"#8abeb7"
+		),
+		mdCodeBlock = getColorWithFallback(
+			{ "@markup.raw.block.markdown", "@markup.raw", "@text.literal", "markdownCodeBlock" },
+			"fg",
+			"#b5bd68"
+		),
 		mdCodeBlockBorder = getColorWithFallback({ "Comment" }, "fg", "#808080"),
 		mdQuote = getColorWithFallback({ "Comment", "@text.quote" }, "fg", "#808080"),
 		mdQuoteBorder = getColorWithFallback({ "Comment" }, "fg", "#808080"),
